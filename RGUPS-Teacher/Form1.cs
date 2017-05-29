@@ -13,6 +13,13 @@ namespace RGUPS_Teacher
     public partial class Form1 : Form
     {
         private string pathToBook1, pathToBook2, pathToBook3, link1, link2, link3;
+
+
+        private void btnOpenBook2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +34,7 @@ namespace RGUPS_Teacher
             if (ofd.ShowDialog() == DialogResult.OK) {
                 txtBoxPathToBook1.Text = ofd.FileName;
                 pathToBook1 = ofd.FileName;
-                MessageBox.Show("Surprise");
+                
 
             }
         }

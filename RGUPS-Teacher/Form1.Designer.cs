@@ -39,6 +39,10 @@
             this.txtNameBook2 = new System.Windows.Forms.TextBox();
             this.txtBoxPathToBook2 = new System.Windows.Forms.TextBox();
             this.btnOpenBook2 = new System.Windows.Forms.Button();
+            this.lblBook3 = new System.Windows.Forms.Label();
+            this.txtNameBook3 = new System.Windows.Forms.TextBox();
+            this.txtBoxPathToBook3 = new System.Windows.Forms.TextBox();
+            this.btnOpenSave3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,16 +64,22 @@
             this.tableLayoutPanel1.Controls.Add(this.txtNameBook2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtBoxPathToBook2, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnOpenBook2, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblBook3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtNameBook3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxPathToBook3, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnOpenSave3, 3, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 532F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(997, 619);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -170,6 +180,45 @@
             this.btnOpenBook2.TabIndex = 10;
             this.btnOpenBook2.Text = "Открыть/Сохранить";
             this.btnOpenBook2.UseVisualStyleBackColor = true;
+            this.btnOpenBook2.Click += new System.EventHandler(this.btnOpenBook2_Click);
+            // 
+            // lblBook3
+            // 
+            this.lblBook3.AutoSize = true;
+            this.lblBook3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBook3.Location = new System.Drawing.Point(4, 85);
+            this.lblBook3.Name = "lblBook3";
+            this.lblBook3.Size = new System.Drawing.Size(76, 27);
+            this.lblBook3.TabIndex = 11;
+            this.lblBook3.Text = "Учебник №3";
+            this.lblBook3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtNameBook3
+            // 
+            this.txtNameBook3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNameBook3.Location = new System.Drawing.Point(87, 88);
+            this.txtNameBook3.Name = "txtNameBook3";
+            this.txtNameBook3.Size = new System.Drawing.Size(406, 20);
+            this.txtNameBook3.TabIndex = 12;
+            // 
+            // txtBoxPathToBook3
+            // 
+            this.txtBoxPathToBook3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBoxPathToBook3.Location = new System.Drawing.Point(500, 88);
+            this.txtBoxPathToBook3.Name = "txtBoxPathToBook3";
+            this.txtBoxPathToBook3.ReadOnly = true;
+            this.txtBoxPathToBook3.Size = new System.Drawing.Size(367, 20);
+            this.txtBoxPathToBook3.TabIndex = 13;
+            // 
+            // btnOpenSave3
+            // 
+            this.btnOpenSave3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOpenSave3.Location = new System.Drawing.Point(874, 88);
+            this.btnOpenSave3.Name = "btnOpenSave3";
+            this.btnOpenSave3.Size = new System.Drawing.Size(119, 21);
+            this.btnOpenSave3.TabIndex = 14;
+            this.btnOpenSave3.Text = "Открыть/Сохранить";
+            this.btnOpenSave3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -200,6 +249,10 @@
         private System.Windows.Forms.TextBox txtNameBook2;
         private System.Windows.Forms.TextBox txtBoxPathToBook2;
         private System.Windows.Forms.Button btnOpenBook2;
+        private System.Windows.Forms.Label lblBook3;
+        private System.Windows.Forms.TextBox txtNameBook3;
+        private System.Windows.Forms.TextBox txtBoxPathToBook3;
+        private System.Windows.Forms.Button btnOpenSave3;
     }
 }
 
