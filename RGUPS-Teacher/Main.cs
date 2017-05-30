@@ -24,17 +24,41 @@ namespace RGUPS_Teacher
             fm.Show();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void addTreeNode(XmlNode xmlNode, TreeNode treeNode)
+        {
+            XmlNode xNode;
+            TreeNode tNode;
+            XmlNodeList xNodeList;
+            if (xmlNode.HasChildNodes) //The current node has children
+            {
+                xNodeList = xmlNode.ChildNodes;
+                for (var x = 0; x <= xNodeList.Count - 1; x++)
+                //Loop through the child nodes
+                {
+                    xNode = xmlNode.ChildNodes[x];
+                    treeNode.Nodes.Add(new TreeNode(xNode.Name));
+                    tNode = treeNode.Nodes[x];
+                    addTreeNode(xNode, tNode);
+                }
+            }
+            else //No children, so add the outer xml (trimming off whitespace)
+            {
+                treeNode.Text = xmlNode.OuterXml.Trim();
+            }
+        }
+
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tsmOpen_Click(object sender, EventArgs e)
         {
             var dlg = new OpenFileDialog();
             dlg.Title = "Open XML Document";
@@ -70,28 +94,6 @@ namespace RGUPS_Teacher
                 {
                     Cursor = Cursors.Default; //Change the cursor back
                 }
-        }
-        private void addTreeNode(XmlNode xmlNode, TreeNode treeNode)
-        {
-            XmlNode xNode;
-            TreeNode tNode;
-            XmlNodeList xNodeList;
-            if (xmlNode.HasChildNodes) //The current node has children
-            {
-                xNodeList = xmlNode.ChildNodes;
-                for (var x = 0; x <= xNodeList.Count - 1; x++)
-                //Loop through the child nodes
-                {
-                    xNode = xmlNode.ChildNodes[x];
-                    treeNode.Nodes.Add(new TreeNode(xNode.Name));
-                    tNode = treeNode.Nodes[x];
-                    addTreeNode(xNode, tNode);
-                }
-            }
-            else //No children, so add the outer xml (trimming off whitespace)
-            {
-                treeNode.Text = xmlNode.OuterXml.Trim();
-            }
         }
     }
 }
