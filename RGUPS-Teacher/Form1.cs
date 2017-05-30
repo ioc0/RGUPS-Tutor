@@ -14,10 +14,29 @@ namespace RGUPS_Teacher
     {
         private string pathToBook1, pathToBook2, pathToBook3, link1, link2, link3;
 
+        private void btnOpenSave3_Click(object sender, EventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.Title = "Open PDF Document";
+            ofd.Filter = "PDF Files (*.pdf)|*.pdf";
+            ofd.FileName = Application.StartupPath + "\\..\\..\\book.pdf";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                txtBoxPathToBook3.Text = ofd.FileName;
+                pathToBook3 = ofd.FileName;
+            }
+        }
 
         private void btnOpenBook2_Click(object sender, EventArgs e)
         {
-
+            var ofd = new OpenFileDialog();
+            ofd.Title = "Open PDF Document";
+            ofd.Filter = "PDF Files (*.pdf)|*.pdf";
+            ofd.FileName = Application.StartupPath + "\\..\\..\\book.pdf";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {       txtBoxPathToBook2.Text = ofd.FileName;
+                    pathToBook2 = ofd.FileName;
+            }
         }
 
         public Form1()
@@ -35,7 +54,6 @@ namespace RGUPS_Teacher
                 txtBoxPathToBook1.Text = ofd.FileName;
                 pathToBook1 = ofd.FileName;
                 
-
             }
         }
     }

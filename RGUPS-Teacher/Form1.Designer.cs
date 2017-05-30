@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSaveBook1 = new System.Windows.Forms.Button();
             this.txtNameBook1 = new System.Windows.Forms.TextBox();
             this.lblBook2 = new System.Windows.Forms.Label();
+            this.btnSaveBook1 = new System.Windows.Forms.Button();
             this.txtBoxPathToBook1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 373F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtNameBook1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblBook2, 0, 2);
@@ -89,26 +89,15 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(4, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 27);
+            this.label2.Size = new System.Drawing.Size(75, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "Учебник №1";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnSaveBook1
-            // 
-            this.btnSaveBook1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSaveBook1.Location = new System.Drawing.Point(874, 32);
-            this.btnSaveBook1.Name = "btnSaveBook1";
-            this.btnSaveBook1.Size = new System.Drawing.Size(119, 21);
-            this.btnSaveBook1.TabIndex = 2;
-            this.btnSaveBook1.Text = "Открыть/Сохранить";
-            this.btnSaveBook1.UseVisualStyleBackColor = true;
-            this.btnSaveBook1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // txtNameBook1
             // 
             this.txtNameBook1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameBook1.Location = new System.Drawing.Point(87, 32);
+            this.txtNameBook1.Location = new System.Drawing.Point(86, 32);
             this.txtNameBook1.Name = "txtNameBook1";
             this.txtNameBook1.Size = new System.Drawing.Size(406, 20);
             this.txtNameBook1.TabIndex = 3;
@@ -119,14 +108,25 @@
             this.lblBook2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblBook2.Location = new System.Drawing.Point(4, 57);
             this.lblBook2.Name = "lblBook2";
-            this.lblBook2.Size = new System.Drawing.Size(76, 27);
+            this.lblBook2.Size = new System.Drawing.Size(75, 27);
             this.lblBook2.TabIndex = 4;
             this.lblBook2.Text = "Учебник №2";
             this.lblBook2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnSaveBook1
+            // 
+            this.btnSaveBook1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSaveBook1.Location = new System.Drawing.Point(873, 32);
+            this.btnSaveBook1.Name = "btnSaveBook1";
+            this.btnSaveBook1.Size = new System.Drawing.Size(120, 21);
+            this.btnSaveBook1.TabIndex = 2;
+            this.btnSaveBook1.Text = "Открыть/Сохранить";
+            this.btnSaveBook1.UseVisualStyleBackColor = true;
+            this.btnSaveBook1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtBoxPathToBook1
             // 
-            this.txtBoxPathToBook1.Location = new System.Drawing.Point(500, 32);
+            this.txtBoxPathToBook1.Location = new System.Drawing.Point(499, 32);
             this.txtBoxPathToBook1.Name = "txtBoxPathToBook1";
             this.txtBoxPathToBook1.ReadOnly = true;
             this.txtBoxPathToBook1.Size = new System.Drawing.Size(367, 20);
@@ -136,7 +136,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(87, 1);
+            this.label1.Location = new System.Drawing.Point(86, 1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(406, 27);
             this.label1.TabIndex = 6;
@@ -147,7 +147,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(500, 1);
+            this.label3.Location = new System.Drawing.Point(499, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(367, 27);
             this.label3.TabIndex = 7;
@@ -157,7 +157,7 @@
             // txtNameBook2
             // 
             this.txtNameBook2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameBook2.Location = new System.Drawing.Point(87, 60);
+            this.txtNameBook2.Location = new System.Drawing.Point(86, 60);
             this.txtNameBook2.Name = "txtNameBook2";
             this.txtNameBook2.Size = new System.Drawing.Size(406, 20);
             this.txtNameBook2.TabIndex = 8;
@@ -165,7 +165,7 @@
             // txtBoxPathToBook2
             // 
             this.txtBoxPathToBook2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBoxPathToBook2.Location = new System.Drawing.Point(500, 60);
+            this.txtBoxPathToBook2.Location = new System.Drawing.Point(499, 60);
             this.txtBoxPathToBook2.Name = "txtBoxPathToBook2";
             this.txtBoxPathToBook2.ReadOnly = true;
             this.txtBoxPathToBook2.Size = new System.Drawing.Size(367, 20);
@@ -174,9 +174,9 @@
             // btnOpenBook2
             // 
             this.btnOpenBook2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOpenBook2.Location = new System.Drawing.Point(874, 60);
+            this.btnOpenBook2.Location = new System.Drawing.Point(873, 60);
             this.btnOpenBook2.Name = "btnOpenBook2";
-            this.btnOpenBook2.Size = new System.Drawing.Size(119, 21);
+            this.btnOpenBook2.Size = new System.Drawing.Size(120, 21);
             this.btnOpenBook2.TabIndex = 10;
             this.btnOpenBook2.Text = "Открыть/Сохранить";
             this.btnOpenBook2.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.lblBook3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblBook3.Location = new System.Drawing.Point(4, 85);
             this.lblBook3.Name = "lblBook3";
-            this.lblBook3.Size = new System.Drawing.Size(76, 27);
+            this.lblBook3.Size = new System.Drawing.Size(75, 27);
             this.lblBook3.TabIndex = 11;
             this.lblBook3.Text = "Учебник №3";
             this.lblBook3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -196,7 +196,7 @@
             // txtNameBook3
             // 
             this.txtNameBook3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNameBook3.Location = new System.Drawing.Point(87, 88);
+            this.txtNameBook3.Location = new System.Drawing.Point(86, 88);
             this.txtNameBook3.Name = "txtNameBook3";
             this.txtNameBook3.Size = new System.Drawing.Size(406, 20);
             this.txtNameBook3.TabIndex = 12;
@@ -204,7 +204,7 @@
             // txtBoxPathToBook3
             // 
             this.txtBoxPathToBook3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBoxPathToBook3.Location = new System.Drawing.Point(500, 88);
+            this.txtBoxPathToBook3.Location = new System.Drawing.Point(499, 88);
             this.txtBoxPathToBook3.Name = "txtBoxPathToBook3";
             this.txtBoxPathToBook3.ReadOnly = true;
             this.txtBoxPathToBook3.Size = new System.Drawing.Size(367, 20);
@@ -213,12 +213,13 @@
             // btnOpenSave3
             // 
             this.btnOpenSave3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOpenSave3.Location = new System.Drawing.Point(874, 88);
+            this.btnOpenSave3.Location = new System.Drawing.Point(873, 88);
             this.btnOpenSave3.Name = "btnOpenSave3";
-            this.btnOpenSave3.Size = new System.Drawing.Size(119, 21);
+            this.btnOpenSave3.Size = new System.Drawing.Size(120, 21);
             this.btnOpenSave3.TabIndex = 14;
             this.btnOpenSave3.Text = "Открыть/Сохранить";
             this.btnOpenSave3.UseVisualStyleBackColor = true;
+            this.btnOpenSave3.Click += new System.EventHandler(this.btnOpenSave3_Click);
             // 
             // Form1
             // 
