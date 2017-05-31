@@ -195,6 +195,12 @@ namespace RGUPS_Teacher
 
         private void button3_Click(object sender, EventArgs e)
         {
+            AddNodeMethod();
+
+        }
+
+        private void AddNodeMethod()
+        {
             // If neither TreeNodeCollection is read-only, move the 
             // selected node from treeView1 to treeView2.
             if (!treeView1.Nodes.IsReadOnly)
@@ -208,10 +214,14 @@ namespace RGUPS_Teacher
                     selectedNode.Nodes.Add(tn);
                 }
             }
-
         }
 
         private void removeNode_Click(object sender, EventArgs e)
+        {
+            RemoveNodeMetod();
+        }
+
+        private void RemoveNodeMetod()
         {
             this.treeView1.SelectedNode.Remove();
         }
