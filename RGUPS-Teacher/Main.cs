@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
+/*Code taken from
+ * https://www.codeproject.com/Articles/13099/Loading-and-Saving-a-TreeView-control-to-an-XML-fi
+ * 
+*/
 namespace RGUPS_Teacher
 {
     public partial class Main : Form
     {
+        private StreamWriter sr;
         XmlDocument xDoc = new XmlDocument();
         string path;
+        private TreeNode mySelectedNode;
+
+        
+
         public Main()
         {
             InitializeComponent();
@@ -59,26 +69,32 @@ namespace RGUPS_Teacher
         {
             try
             {
-                string sStartupPath = Application.StartupPath;
+                
                 XmlTextWriter objXmlTextWriter =
                      new XmlTextWriter(path, null);
                 objXmlTextWriter.Formatting = Formatting.Indented;
                 objXmlTextWriter.WriteStartDocument();
 
-                objXmlTextWriter.WriteStartElement("MySelectedValues");
-                objXmlTextWriter.WriteStartElement("BookName");
-                objXmlTextWriter.WriteString("new");
-                objXmlTextWriter.WriteEndElement();
-                
-                objXmlTextWriter.WriteStartElement("ReleaseYear");
-                objXmlTextWriter.WriteString("SOMEDATA");
+                objXmlTextWriter.WriteStartElement("Название_дисциплины");
+                //addSecondaryNode();
+                for (int i = 0; i < 10; i++)
+                {
+                    objXmlTextWriter.WriteStartElement("BookName");
+                    objXmlTextWriter.WriteString("new");
+                    objXmlTextWriter.WriteEndElement();
+                }
 
                 objXmlTextWriter.WriteEndElement();
-                objXmlTextWriter.WriteStartElement("Publication");
-                objXmlTextWriter.WriteString("Some publication");
-                objXmlTextWriter.WriteEndElement();
-                objXmlTextWriter.WriteEndElement();
-                objXmlTextWriter.WriteEndDocument();
+                
+                //objXmlTextWriter.WriteStartElement("ReleaseYear");
+                //objXmlTextWriter.WriteString("SOMEDATA");
+
+                //objXmlTextWriter.WriteEndElement();
+                //objXmlTextWriter.WriteStartElement("Publication");
+                //objXmlTextWriter.WriteString("Some publication");
+                //objXmlTextWriter.WriteEndElement();
+                //objXmlTextWriter.WriteEndElement();
+                //objXmlTextWriter.WriteEndDocument();
                 objXmlTextWriter.Flush();
                 objXmlTextWriter.Close();
                 MessageBox.Show("The following file has been successfully created\r\n");
@@ -87,6 +103,31 @@ namespace RGUPS_Teacher
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void addSecondaryNode()
+        {
+            try
+            {
+                XmlTextWriter tw =
+                         new XmlTextWriter(path, null);
+                for (int i = 0; i > 5; i++)
+                {
+                    
+                    tw.WriteStartElement("Книга_1");
+                    tw.WriteString("СтивенКинг");
+                    tw.WriteEndElement();
+                }
+                tw.Close();
+            
+                MessageBox.Show("Successfull");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+
         }
 
         private void tsmExit_Click(object sender, EventArgs e)
@@ -138,6 +179,94 @@ namespace RGUPS_Teacher
         private void button1_Click_1(object sender, EventArgs e)
         {
             writeTreeNode();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            addSecondaryNode();
+        }
+
+        private void nodeEdit(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            MessageBox.Show("Clicked");
+        }
+
+        private void selectNode(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            mySelectedNode = treeView1.GetNodeAt(e.X, e.Y);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mySelectedNode != null && mySelectedNode.Parent != null)
+            {
+                treeView1.SelectedNode = mySelectedNode;
+                treeView1.LabelEdit = true;
+                if (!mySelectedNode.IsEditing)
+                {
+                    mySelectedNode.BeginEdit();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tree node selected or selected node is a root node.\n" +
+                   "Editing of root nodes is not allowed.", "Invalid selection");
+            }
+        }
+
+
+        //SaveWorks
+
+        public void exportToXml(TreeView tv, string filename)
+        {
+            sr = new StreamWriter(filename, false, System.Text.Encoding.UTF8);
+            //Write the header
+            sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+            //Write our root node
+            sr.WriteLine("<" + treeView1.Nodes[0].Text + ">");
+            foreach (TreeNode node in tv.Nodes)
+            {
+                saveNode(node.Nodes);
+            }
+            //Close the root node
+            sr.WriteLine("</" + treeView1.Nodes[0].Text + ">");
+            sr.Close();
+        }
+
+        private void saveNode(TreeNodeCollection tnc)
+        {
+            foreach (TreeNode node in tnc)
+            {
+                //If we have child nodes, we'll write 
+                //a parent node, then iterrate through
+                //the children
+                if (node.Nodes.Count > 0)
+                {
+                    sr.WriteLine("<" + node.Text + ">");
+                    saveNode(node.Nodes);
+                    sr.WriteLine("</" + node.Text + ">");
+                }
+                else //No child nodes, so we just write the text
+                    sr.WriteLine(node.Text);
+            }
+        }
+
+        private void tsmSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                exportToXml(this.treeView1, path);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
