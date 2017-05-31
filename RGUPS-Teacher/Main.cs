@@ -30,18 +30,82 @@ namespace RGUPS_Teacher
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        
+    
+
+       
+    
+
+        private void tsmExit_Click(object sender, EventArgs e)
         {
-            var fm = new Form1();
-            fm.Show();
+            this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void tsmOpen_Click(object sender, EventArgs e)
         {
-
+            OpenXmlNodes();
         }
 
         
+
+       
+
+        private void selectNode(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            mySelectedNode = treeView1.GetNodeAt(e.X, e.Y);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditLabel();
+        }
+
+
+
+
+        //Working Methods
+        private void OpenXmlNodes()
+        {
+            var dlg = new OpenFileDialog();
+            dlg.Title = "Open XML Document";
+            dlg.Filter = "XML Files (*.xml)|*.xml";
+
+            dlg.FileName = Application.StartupPath + "\\..\\..\\example.xml";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+                path = dlg.FileName;
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+
+
+                xDoc.Load(dlg.FileName);
+
+                treeView1.Nodes.Clear();
+                treeView1.Nodes.Add(new
+                    TreeNode(xDoc.DocumentElement.Name));
+                var tNode = new TreeNode();
+                tNode = treeView1.Nodes[0];
+                addTreeNode(xDoc.DocumentElement, tNode);
+
+                treeView1.ExpandAll();
+            }
+            catch (XmlException xExc)
+            //Exception is thrown is there is an error in the Xml
+            {
+                MessageBox.Show(xExc.Message);
+            }
+            catch (Exception ex) //General exception
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor = Cursors.Default; //Change the cursor back
+            }
+        }
         private void addTreeNode(XmlNode xmlNode, TreeNode treeNode)
         {
             XmlNode xNode;
@@ -64,139 +128,7 @@ namespace RGUPS_Teacher
                 treeNode.Text = xmlNode.OuterXml.Trim();
             }
         }
-
-        private void writeTreeNode()
-        {
-            try
-            {
-                
-                XmlTextWriter objXmlTextWriter =
-                     new XmlTextWriter(path, null);
-                objXmlTextWriter.Formatting = Formatting.Indented;
-                objXmlTextWriter.WriteStartDocument();
-
-                objXmlTextWriter.WriteStartElement("Название_дисциплины");
-                //addSecondaryNode();
-                for (int i = 0; i < 10; i++)
-                {
-                    objXmlTextWriter.WriteStartElement("BookName");
-                    objXmlTextWriter.WriteString("new");
-                    objXmlTextWriter.WriteEndElement();
-                }
-
-                objXmlTextWriter.WriteEndElement();
-                
-                //objXmlTextWriter.WriteStartElement("ReleaseYear");
-                //objXmlTextWriter.WriteString("SOMEDATA");
-
-                //objXmlTextWriter.WriteEndElement();
-                //objXmlTextWriter.WriteStartElement("Publication");
-                //objXmlTextWriter.WriteString("Some publication");
-                //objXmlTextWriter.WriteEndElement();
-                //objXmlTextWriter.WriteEndElement();
-                //objXmlTextWriter.WriteEndDocument();
-                objXmlTextWriter.Flush();
-                objXmlTextWriter.Close();
-                MessageBox.Show("The following file has been successfully created\r\n");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        private void addSecondaryNode()
-        {
-            try
-            {
-                XmlTextWriter tw =
-                         new XmlTextWriter(path, null);
-                for (int i = 0; i > 5; i++)
-                {
-                    
-                    tw.WriteStartElement("Книга_1");
-                    tw.WriteString("СтивенКинг");
-                    tw.WriteEndElement();
-                }
-                tw.Close();
-            
-                MessageBox.Show("Successfull");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                throw;
-            }
-
-        }
-
-        private void tsmExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void tsmOpen_Click(object sender, EventArgs e)
-        {
-            var dlg = new OpenFileDialog();
-            dlg.Title = "Open XML Document";
-            dlg.Filter = "XML Files (*.xml)|*.xml";
-            
-            dlg.FileName = Application.StartupPath + "\\..\\..\\example.xml";
-            
-            if (dlg.ShowDialog() == DialogResult.OK)
-                path = dlg.FileName;
-            try
-                {
-                    Cursor = Cursors.WaitCursor;
-
-                    
-                    xDoc.Load(dlg.FileName);
-
-                    treeView1.Nodes.Clear();
-                    treeView1.Nodes.Add(new
-                        TreeNode(xDoc.DocumentElement.Name));
-                    var tNode = new TreeNode();
-                    tNode = treeView1.Nodes[0];
-                    addTreeNode(xDoc.DocumentElement, tNode);
-
-                    treeView1.ExpandAll();
-                }
-                catch (XmlException xExc)
-                //Exception is thrown is there is an error in the Xml
-                {
-                    MessageBox.Show(xExc.Message);
-                }
-                catch (Exception ex) //General exception
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    Cursor = Cursors.Default; //Change the cursor back
-                }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            writeTreeNode();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            addSecondaryNode();
-        }
-
-        private void nodeEdit(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            MessageBox.Show("Clicked");
-        }
-
-        private void selectNode(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            mySelectedNode = treeView1.GetNodeAt(e.X, e.Y);
-        }
-
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditLabel()
         {
             if (mySelectedNode != null && mySelectedNode.Parent != null)
             {
@@ -213,9 +145,6 @@ namespace RGUPS_Teacher
                    "Editing of root nodes is not allowed.", "Invalid selection");
             }
         }
-
-
-        //SaveWorks
 
         public void exportToXml(TreeView tv, string filename)
         {
@@ -266,7 +195,25 @@ namespace RGUPS_Teacher
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // If neither TreeNodeCollection is read-only, move the 
+            // selected node from treeView1 to treeView2.
+            if (!treeView1.Nodes.IsReadOnly)
+            {
+                if (treeView1.SelectedNode != null)
+                {
+                    TreeNode tn = new TreeNode();
+                    //tn.Name = textBox1.Text;
+                    tn.Text = textBox1.Text;
+                    TreeNode selectedNode = this.treeView1.SelectedNode;
+                    selectedNode.Nodes.Add(tn);
+                }
+            }
 
+        }
+
+        private void removeNode_Click(object sender, EventArgs e)
+        {
+            this.treeView1.SelectedNode.Remove();
         }
     }
 }

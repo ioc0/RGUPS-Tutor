@@ -43,9 +43,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.removeNode = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAddNode = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -77,34 +77,34 @@
             // tsmNew
             // 
             this.tsmNew.Name = "tsmNew";
-            this.tsmNew.Size = new System.Drawing.Size(152, 22);
+            this.tsmNew.Size = new System.Drawing.Size(132, 22);
             this.tsmNew.Text = "Новый";
             // 
             // tsmOpen
             // 
             this.tsmOpen.Name = "tsmOpen";
-            this.tsmOpen.Size = new System.Drawing.Size(152, 22);
+            this.tsmOpen.Size = new System.Drawing.Size(132, 22);
             this.tsmOpen.Text = "Открыть";
             this.tsmOpen.Click += new System.EventHandler(this.tsmOpen_Click);
             // 
             // tsmSave
             // 
             this.tsmSave.Name = "tsmSave";
-            this.tsmSave.Size = new System.Drawing.Size(152, 22);
+            this.tsmSave.Size = new System.Drawing.Size(132, 22);
             this.tsmSave.Text = "Сохранить";
             this.tsmSave.Click += new System.EventHandler(this.tsmSave_Click);
             // 
             // tsmExit
             // 
             this.tsmExit.Name = "tsmExit";
-            this.tsmExit.Size = new System.Drawing.Size(152, 22);
+            this.tsmExit.Size = new System.Drawing.Size(132, 22);
             this.tsmExit.Text = "Выход";
             this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.editToolStripMenuItem.Text = "edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -145,20 +145,19 @@
             this.treeView1.Size = new System.Drawing.Size(528, 598);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.selectNode);
-            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.nodeEdit);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.78674F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.21326F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 184F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBox1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.removeNode, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnAddNode, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(537, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -175,17 +174,16 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 27);
+            this.label1.Size = new System.Drawing.Size(137, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "Название дисциплины";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(147, 0);
+            this.label2.Location = new System.Drawing.Point(146, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(194, 27);
             this.label2.TabIndex = 1;
@@ -196,38 +194,37 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(3, 30);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 20);
+            this.textBox1.Size = new System.Drawing.Size(137, 20);
             this.textBox1.TabIndex = 2;
             // 
-            // button1
+            // removeNode
             // 
-            this.button1.Location = new System.Drawing.Point(347, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 21);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.removeNode.Location = new System.Drawing.Point(346, 30);
+            this.removeNode.Name = "removeNode";
+            this.removeNode.Size = new System.Drawing.Size(75, 21);
+            this.removeNode.TabIndex = 3;
+            this.removeNode.Text = "removeNode";
+            this.removeNode.UseVisualStyleBackColor = true;
+            this.removeNode.Click += new System.EventHandler(this.removeNode_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(347, 3);
+            this.button2.Location = new System.Drawing.Point(346, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 21);
             this.button2.TabIndex = 4;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnAddNode
             // 
-            this.button3.Location = new System.Drawing.Point(147, 30);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 21);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnAddNode.Location = new System.Drawing.Point(146, 30);
+            this.btnAddNode.Name = "btnAddNode";
+            this.btnAddNode.Size = new System.Drawing.Size(75, 21);
+            this.btnAddNode.TabIndex = 5;
+            this.btnAddNode.Text = "Add Node";
+            this.btnAddNode.UseVisualStyleBackColor = true;
+            this.btnAddNode.Click += new System.EventHandler(this.button3_Click);
             // 
             // Main
             // 
@@ -265,9 +262,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button removeNode;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAddNode;
     }
 }
