@@ -13,6 +13,8 @@ namespace RGUPS_Teacher
 {
     public partial class Main : Form
     {
+        XmlDocument xDoc = new XmlDocument();
+        string path;
         public Main()
         {
             InitializeComponent();
@@ -53,6 +55,40 @@ namespace RGUPS_Teacher
             }
         }
 
+        private void writeTreeNode()
+        {
+            try
+            {
+                string sStartupPath = Application.StartupPath;
+                XmlTextWriter objXmlTextWriter =
+                     new XmlTextWriter(path, null);
+                objXmlTextWriter.Formatting = Formatting.Indented;
+                objXmlTextWriter.WriteStartDocument();
+
+                objXmlTextWriter.WriteStartElement("MySelectedValues");
+                objXmlTextWriter.WriteStartElement("BookName");
+                objXmlTextWriter.WriteString("new");
+                objXmlTextWriter.WriteEndElement();
+                
+                objXmlTextWriter.WriteStartElement("ReleaseYear");
+                objXmlTextWriter.WriteString("SOMEDATA");
+
+                objXmlTextWriter.WriteEndElement();
+                objXmlTextWriter.WriteStartElement("Publication");
+                objXmlTextWriter.WriteString("Some publication");
+                objXmlTextWriter.WriteEndElement();
+                objXmlTextWriter.WriteEndElement();
+                objXmlTextWriter.WriteEndDocument();
+                objXmlTextWriter.Flush();
+                objXmlTextWriter.Close();
+                MessageBox.Show("The following file has been successfully created\r\n");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void tsmExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -63,13 +99,16 @@ namespace RGUPS_Teacher
             var dlg = new OpenFileDialog();
             dlg.Title = "Open XML Document";
             dlg.Filter = "XML Files (*.xml)|*.xml";
+            
             dlg.FileName = Application.StartupPath + "\\..\\..\\example.xml";
+            
             if (dlg.ShowDialog() == DialogResult.OK)
-                try
+                path = dlg.FileName;
+            try
                 {
                     Cursor = Cursors.WaitCursor;
 
-                    var xDoc = new XmlDocument();
+                    
                     xDoc.Load(dlg.FileName);
 
                     treeView1.Nodes.Clear();
@@ -94,6 +133,11 @@ namespace RGUPS_Teacher
                 {
                     Cursor = Cursors.Default; //Change the cursor back
                 }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            writeTreeNode();
         }
     }
 }
