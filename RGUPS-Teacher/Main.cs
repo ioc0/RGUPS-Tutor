@@ -22,12 +22,16 @@ namespace RGUPS_Teacher
         XmlDocument xDoc = new XmlDocument();
         string path;
         private TreeNode mySelectedNode;
+        
+        
 
         
 
         public Main()
         {
+            
             InitializeComponent();
+            
         }
 
        
@@ -212,6 +216,9 @@ namespace RGUPS_Teacher
                     tn.Text = textBox1.Text;
                     TreeNode selectedNode = this.treeView1.SelectedNode;
                     selectedNode.Nodes.Add(tn);
+                    textBox1.Text = "";
+                    
+                    
                 }
             }
         }
@@ -224,6 +231,43 @@ namespace RGUPS_Teacher
         private void RemoveNodeMetod()
         {
             this.treeView1.SelectedNode.Remove();
+        }
+        private void textAdd()
+        {
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fm = new Form1();
+            fm.Show();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(Form1.allLinks[0]);
+                foreach (string i in Form1.allLinks)
+                {
+                    if (!i.Equals(""))
+                    {
+                        cmb1.Items.Add(i);
+                    }
+                    
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
         }
     }
 }
