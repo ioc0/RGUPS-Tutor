@@ -35,9 +35,9 @@
             this.tsmNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -52,6 +52,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoxPage = new System.Windows.Forms.TextBox();
             this.cmb1 = new System.Windows.Forms.ComboBox();
+            this.cmbAdvanceChose = new System.Windows.Forms.ComboBox();
             label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -64,7 +65,7 @@
             label3.Dock = System.Windows.Forms.DockStyle.Fill;
             label3.Location = new System.Drawing.Point(3, 54);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(206, 27);
+            label3.Size = new System.Drawing.Size(159, 27);
             label3.TabIndex = 6;
             label3.Text = "Название учебного материала";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,13 +115,6 @@
             this.tsmSave.Text = "Сохранить";
             this.tsmSave.Click += new System.EventHandler(this.tsmSave_Click);
             // 
-            // tsmExit
-            // 
-            this.tsmExit.Name = "tsmExit";
-            this.tsmExit.Size = new System.Drawing.Size(194, 22);
-            this.tsmExit.Text = "Выход";
-            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
-            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -135,6 +129,13 @@
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
+            // tsmExit
+            // 
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(194, 22);
+            this.tsmExit.Text = "Выход";
+            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
+            // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -146,7 +147,7 @@
             // помощьToolStripMenuItem
             // 
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // tableLayoutPanel1
@@ -176,28 +177,30 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.2807F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.7193F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 187F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.52941F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.47059F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBox1, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.removeNode, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnAddNode, 1, 1);
             this.tableLayoutPanel2.Controls.Add(label3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button2, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.label4, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.txtBoxPage, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.cmb1, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.removeNode, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnAddNode, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.cmbAdvanceChose, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(537, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 5;
+            this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(529, 598);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -207,7 +210,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 27);
+            this.label1.Size = new System.Drawing.Size(159, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "Название раздела";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -216,9 +219,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(215, 0);
+            this.label2.Location = new System.Drawing.Point(168, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 27);
+            this.label2.Size = new System.Drawing.Size(169, 27);
             this.label2.TabIndex = 1;
             this.label2.Text = "Название";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -228,12 +231,12 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Location = new System.Drawing.Point(3, 30);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 20);
+            this.textBox1.Size = new System.Drawing.Size(159, 20);
             this.textBox1.TabIndex = 2;
             // 
             // removeNode
             // 
-            this.removeNode.Location = new System.Drawing.Point(344, 30);
+            this.removeNode.Location = new System.Drawing.Point(343, 3);
             this.removeNode.Name = "removeNode";
             this.removeNode.Size = new System.Drawing.Size(115, 21);
             this.removeNode.TabIndex = 3;
@@ -243,7 +246,7 @@
             // 
             // btnAddNode
             // 
-            this.btnAddNode.Location = new System.Drawing.Point(215, 30);
+            this.btnAddNode.Location = new System.Drawing.Point(343, 30);
             this.btnAddNode.Name = "btnAddNode";
             this.btnAddNode.Size = new System.Drawing.Size(123, 21);
             this.btnAddNode.TabIndex = 5;
@@ -253,7 +256,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(344, 84);
+            this.button2.Location = new System.Drawing.Point(343, 84);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 21);
             this.button2.TabIndex = 4;
@@ -265,9 +268,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(215, 54);
+            this.label4.Location = new System.Drawing.Point(168, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 27);
+            this.label4.Size = new System.Drawing.Size(169, 27);
             this.label4.TabIndex = 7;
             this.label4.Text = "Страница";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -275,9 +278,9 @@
             // txtBoxPage
             // 
             this.txtBoxPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBoxPage.Location = new System.Drawing.Point(215, 84);
+            this.txtBoxPage.Location = new System.Drawing.Point(168, 84);
             this.txtBoxPage.Name = "txtBoxPage";
-            this.txtBoxPage.Size = new System.Drawing.Size(123, 20);
+            this.txtBoxPage.Size = new System.Drawing.Size(169, 20);
             this.txtBoxPage.TabIndex = 9;
             // 
             // cmb1
@@ -286,8 +289,22 @@
             this.cmb1.FormattingEnabled = true;
             this.cmb1.Location = new System.Drawing.Point(3, 84);
             this.cmb1.Name = "cmb1";
-            this.cmb1.Size = new System.Drawing.Size(206, 21);
+            this.cmb1.Size = new System.Drawing.Size(159, 21);
             this.cmb1.TabIndex = 10;
+            // 
+            // cmbAdvanceChose
+            // 
+            this.cmbAdvanceChose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbAdvanceChose.FormattingEnabled = true;
+            this.cmbAdvanceChose.Items.AddRange(new object[] {
+            "Лекция",
+            "Практика",
+            "Курсовой_Проект",
+            "Лабораторная_Работа"});
+            this.cmbAdvanceChose.Location = new System.Drawing.Point(168, 30);
+            this.cmbAdvanceChose.Name = "cmbAdvanceChose";
+            this.cmbAdvanceChose.Size = new System.Drawing.Size(169, 21);
+            this.cmbAdvanceChose.TabIndex = 11;
             // 
             // Main
             // 
@@ -334,5 +351,6 @@
         private System.Windows.Forms.TextBox txtBoxPage;
         private System.Windows.Forms.ComboBox cmb1;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cmbAdvanceChose;
     }
 }
