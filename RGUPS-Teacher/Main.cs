@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -18,33 +12,28 @@ namespace RGUPS_Teacher
 {
     public partial class Main : Form
     {
-        private StreamWriter sr;
-        XmlDocument xDoc = new XmlDocument();
-        string path;
+        private readonly string[] comboBoxArray = new string[6];
         private TreeNode mySelectedNode;
-        
-        
+        private string path;
+        private StreamWriter sr;
+        private readonly XmlDocument xDoc = new XmlDocument();
 
-        
 
         public Main()
         {
-            
+            comboBoxArray = File.ReadAllLines(Form1.path, Encoding.UTF8);
+
+
             InitializeComponent();
-            
+            foreach (var something in comboBoxArray)
+                if (!something.Equals(""))
+                    cmb1.Items.Add(something);
         }
 
-       
-
-        
-    
-
-       
-    
 
         private void tsmExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void tsmOpen_Click(object sender, EventArgs e)
@@ -52,9 +41,6 @@ namespace RGUPS_Teacher
             OpenXmlNodes();
         }
 
-        
-
-       
 
         private void selectNode(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -65,8 +51,6 @@ namespace RGUPS_Teacher
         {
             EditLabel();
         }
-
-
 
 
         //Working Methods
@@ -97,7 +81,7 @@ namespace RGUPS_Teacher
                 treeView1.ExpandAll();
             }
             catch (XmlException xExc)
-            //Exception is thrown is there is an error in the Xml
+                //Exception is thrown is there is an error in the Xml
             {
                 MessageBox.Show(xExc.Message);
             }
@@ -110,6 +94,7 @@ namespace RGUPS_Teacher
                 Cursor = Cursors.Default; //Change the cursor back
             }
         }
+
         private void addTreeNode(XmlNode xmlNode, TreeNode treeNode)
         {
             XmlNode xNode;
@@ -119,7 +104,7 @@ namespace RGUPS_Teacher
             {
                 xNodeList = xmlNode.ChildNodes;
                 for (var x = 0; x <= xNodeList.Count - 1; x++)
-                //Loop through the child nodes
+                    //Loop through the child nodes
                 {
                     xNode = xmlNode.ChildNodes[x];
                     treeNode.Nodes.Add(new TreeNode(xNode.Name));
@@ -132,6 +117,7 @@ namespace RGUPS_Teacher
                 treeNode.Text = xmlNode.OuterXml.Trim();
             }
         }
+
         private void EditLabel()
         {
             if (mySelectedNode != null && mySelectedNode.Parent != null)
@@ -139,28 +125,24 @@ namespace RGUPS_Teacher
                 treeView1.SelectedNode = mySelectedNode;
                 treeView1.LabelEdit = true;
                 if (!mySelectedNode.IsEditing)
-                {
                     mySelectedNode.BeginEdit();
-                }
             }
             else
             {
                 MessageBox.Show("No tree node selected or selected node is a root node.\n" +
-                   "Editing of root nodes is not allowed.", "Invalid selection");
+                                "Editing of root nodes is not allowed.", "Invalid selection");
             }
         }
 
         public void exportToXml(TreeView tv, string filename)
         {
-            sr = new StreamWriter(filename, false, System.Text.Encoding.UTF8);
+            sr = new StreamWriter(filename, false, Encoding.UTF8);
             //Write the header
             sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
             //Write our root node
             sr.WriteLine("<" + treeView1.Nodes[0].Text + ">");
             foreach (TreeNode node in tv.Nodes)
-            {
                 saveNode(node.Nodes);
-            }
             //Close the root node
             sr.WriteLine("</" + treeView1.Nodes[0].Text + ">");
             sr.Close();
@@ -169,7 +151,6 @@ namespace RGUPS_Teacher
         private void saveNode(TreeNodeCollection tnc)
         {
             foreach (TreeNode node in tnc)
-            {
                 //If we have child nodes, we'll write 
                 //a parent node, then iterrate through
                 //the children
@@ -180,47 +161,44 @@ namespace RGUPS_Teacher
                     sr.WriteLine("</" + node.Text + ">");
                 }
                 else //No child nodes, so we just write the text
+                {
                     sr.WriteLine(node.Text);
-            }
+                }
         }
+
+
 
         private void tsmSave_Click(object sender, EventArgs e)
         {
             try
             {
-                exportToXml(this.treeView1, path);
+                exportToXml(treeView1, path);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             AddNodeMethod();
-
         }
-
         private void AddNodeMethod()
         {
             // If neither TreeNodeCollection is read-only, move the 
             // selected node from treeView1 to treeView2.
             if (!treeView1.Nodes.IsReadOnly)
-            {
                 if (treeView1.SelectedNode != null)
                 {
-                    TreeNode tn = new TreeNode();
+                    var tn = new TreeNode();
                     //tn.Name = textBox1.Text;
                     tn.Text = textBox1.Text;
-                    TreeNode selectedNode = this.treeView1.SelectedNode;
+                    var selectedNode = treeView1.SelectedNode;
                     selectedNode.Nodes.Add(tn);
                     textBox1.Text = "";
-                    
-                    
                 }
-            }
+            treeView1.ExpandAll();
         }
 
         private void removeNode_Click(object sender, EventArgs e)
@@ -230,16 +208,29 @@ namespace RGUPS_Teacher
 
         private void RemoveNodeMetod()
         {
-            this.treeView1.SelectedNode.Remove();
+            treeView1.SelectedNode.Remove();
         }
-        private void textAdd()
-        {
-            
-        }
+
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var tn = new TreeNode();
+                //tn.Name = textBox1.Text;
+                tn.Text = cmb1.SelectedItem.ToString() + "_стр_" + txtBoxPage.Text;
+                var selectedNode = treeView1.SelectedNode;
+                selectedNode.Nodes.Add(tn);
+                textBox1.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
 
+            }
+                    
+                
         }
 
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -248,26 +239,67 @@ namespace RGUPS_Teacher
             fm.Show();
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void tsmNew_Click(object sender, EventArgs e)
         {
-            try
-            {
-                MessageBox.Show(Form1.allLinks[0]);
-                foreach (string i in Form1.allLinks)
-                {
-                    if (!i.Equals(""))
-                    {
-                        cmb1.Items.Add(i);
-                    }
-                    
-                }
-            }
-            catch (Exception)
-            {
+            createNewExample();
+        }
 
+        private void createNewExample()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "New XML Document";
+            sfd.Filter = "XML Files (*.xml)|*.xml";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                path = sfd.FileName;
+                TreeNode tn1 = new TreeNode();
+                tn1.Text = "РГУПС";
+                treeView1.Nodes.Clear();
+                treeView1.Nodes.Add(tn1);
+                //var tNode = new TreeNode();
+                tn1 = treeView1.Nodes[0];
+                //addTreeNode(xDoc.DocumentElement, tNode);
+                exportToXml(treeView1,path);
+                OpenNewXml();
+                treeView1.ExpandAll();
                 
             }
             
+
+             
+        }
+
+        private void OpenNewXml()
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+
+
+                xDoc.Load(path);
+
+                treeView1.Nodes.Clear();
+                treeView1.Nodes.Add(new
+                    TreeNode(xDoc.DocumentElement.Name));
+                var tNode = new TreeNode();
+                tNode = treeView1.Nodes[0];
+                addTreeNode(xDoc.DocumentElement, tNode);
+
+                treeView1.ExpandAll();
+            }
+            catch (XmlException xExc)
+                //Exception is thrown is there is an error in the Xml
+            {
+                MessageBox.Show(xExc.Message);
+            }
+            catch (Exception ex) //General exception
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor = Cursors.Default; //Change the cursor back
+            }
         }
     }
 }
